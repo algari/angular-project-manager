@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProjectListService} from "./services/project-list.service";
 import {Project} from "./models/project.model";
 
@@ -10,23 +10,43 @@ import {Project} from "./models/project.model";
 export class ProjectListComponent implements OnInit {
 
   isLoading = true;
-  projects:Array<Project>;
+  projects: Array<Project>;
 
-  constructor(private _projectListService:ProjectListService) { }
+  constructor(private _projectListService: ProjectListService) {
+  }
 
   ngOnInit() {
+    this.getAllProjects();
+  }
+
+  private getAllProjects() {
     this._projectListService.getAll().subscribe(
-      (data: Project[])=> {
+      (data: Project[]) => {
         this.projects = data;
         this.isLoading = false;
       },
       err => {
         console.error(err);
       },
-      ()=>{
+      () => {
         console.log('Finished!');
       }
     )
   }
 
+  onDeleteProject(_project: Project) {
+    this._projectListService.delete(_project).subscribe(
+      (data) => {
+        console.log(data);
+        this.getAllProjects();
+        this.isLoading = false;
+      },
+      err => {
+        console.error(err);
+      },
+      () => {
+        console.log('Finished!');
+      }
+    )
+  }
 }
