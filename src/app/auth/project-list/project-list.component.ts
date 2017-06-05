@@ -47,6 +47,6 @@ export class ProjectListComponent implements OnInit {
       () => {
         console.log('Finished!');
       }
-    )
+    );
   }
 }

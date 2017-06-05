@@ -7,18 +7,21 @@ import { HeaderComponent } from './common/header/header.component';
 import { LoaderComponent } from './common/loader/loader.component';
 import {ProjectListService} from "./auth/project-list/services/project-list.service";
 import {HttpModule} from "@angular/http";
+import { IssueListComponent } from './auth/issue-list/issue-list.component';
+import {IssueListService} from "./auth/issue-list/services/issue-list.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     ProjectListComponent,
     HeaderComponent,
-    LoaderComponent
+    LoaderComponent,
+    IssueListComponent
   ],
   imports: [
     BrowserModule,HttpModule
   ],
-  providers: [ProjectListService],
+  providers: [ProjectListService,IssueListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
