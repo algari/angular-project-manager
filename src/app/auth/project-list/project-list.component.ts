@@ -35,7 +35,7 @@ export class ProjectListComponent implements OnInit {
   }
 
   onDeleteProject(_project: Project) {
-    this._projectListService.delete(_project).subscribe(
+    this._projectListService.deleteProject(_project).subscribe(
       (data) => {
         console.log(data);
         this.getAllProjects();
@@ -48,5 +48,9 @@ export class ProjectListComponent implements OnInit {
         console.log('Finished!');
       }
     );
+  }
+
+  setData(sort){
+    this.projects =sort;
   }
 }

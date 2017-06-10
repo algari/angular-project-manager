@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import {AuthenticationService} from "../services/authentication.service";
+
 
 @Component({
   selector: 'app-header',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router, public _authService: AuthenticationService) { }
 
   ngOnInit() {
+
+  }
+
+  logout() {
+    this._authService.logout();
+    this.router.navigate(['/login']);
   }
 
 }

@@ -33,7 +33,7 @@ export class IssueListComponent implements OnInit {
   }
 
   onDeleteIssue(_issue:Issue){
-    this._issueListService.delete(_issue).subscribe(
+    this._issueListService.deleteIssues(_issue).subscribe(
       (data)=>{
         console.log(data);
         this.getAllIssues();
