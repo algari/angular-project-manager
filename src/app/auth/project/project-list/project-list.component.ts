@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ProjectService } from '../services/project.service';
-import { AlertsService, AlertType } from '@jaspero/ng2-alerts/dist';
-import { Project } from "../models/project.model";
-import { Config } from '../../../common/config';
+import {Component, OnInit} from '@angular/core';
+import {ProjectService} from '../services/project.service';
+import {AlertsService, AlertType} from '@jaspero/ng2-alerts/dist';
+import {Project} from "../models/project.model";
+import {Config} from '../../../common/config';
 
 @Component({
   selector: 'app-project-list',
@@ -16,7 +16,8 @@ export class ProjectListComponent implements OnInit {
   projects: Array<Project>;
 
   constructor(private _projectService: ProjectService,
-    private _alert: AlertsService) { }
+              private _alert: AlertsService) {
+  }
 
   ngOnInit() {
     this.getAllProjects();
@@ -49,8 +50,8 @@ export class ProjectListComponent implements OnInit {
   onDeleteProject(project: Project) {
     console.log(`Proyecto a eliminar: ${project.title}`);
     this._projectService.onDelete(project).subscribe((data) => {
-      this.getAllProjects();
-    },
+        this.getAllProjects();
+      },
       errorResponse => {
         const errorData = errorResponse.json();
         this._alert.create('error', `Error al Eliminar el proyectos :( ${project.title}`,

@@ -19,7 +19,7 @@
             </button>
             <div id="logo" class="logo">
               <a
-               
+                routerLink="/home"
                 class="b-navbar-brand">
                 <i class="fa fa-area-chart" aria-hidden="true"></i>
               </a>
@@ -35,8 +35,8 @@
               </li>
               <li class="leaf"
                   >
-                <a 
-                *ngIf="_authService.isLoggedIn()"  
+                <a
+                *ngIf="_authService.isLoggedIn()"
                 routerLink="/issues"
                    title="Iniciar sesión">Issues</a>
               </li>
