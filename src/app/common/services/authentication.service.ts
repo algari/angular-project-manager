@@ -3,12 +3,13 @@ import {HttpService} from './http.service';
 import {SessionStorageService} from 'ngx-webstorage';
 import 'rxjs/add/operator/map';
 import {Config} from '../config';
+import { User } from "../../auth/user/model/user.model";
 
 
 @Injectable()
 export class AuthenticationService {
   hasSession = false;
-  user;
+  user:User;
   apiBaseURL: string = Config.API_SERVER_URL;
 
   constructor(public _http: HttpService, public _locker: SessionStorageService) {

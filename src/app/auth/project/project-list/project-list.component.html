@@ -1,0 +1,81 @@
+<div *ngIf="isLoading; else elseBlock">
+  <div class="auth-loader-container">
+    <app-loader></app-loader>
+  </div>
+</div>
+<ng-template #elseBlock>
+  <div class="margin-bottom-xs b-project-list-sorting">
+    <app-sorting [data]="projects"
+                 [elements]="[
+               {name: 'user_id', displayName: 'Usuario'},
+               {name: 'title', displayName: 'Título'},
+               {name: 'created_at', displayName: 'Creación'},
+               {name: 'updated_at', displayName: 'Actualización'}
+               ]" (sortedData)="setData($event)">
+    </app-sorting>
+  </div>
+
+  <div class="b-project-list">
+    <h2>Proyectos</h2>
+      <table class="table table-striped table-hover " >
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Titulo</th>
+            <th>Description</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let project of projects">
+          <tr class="info">
+            <td> {{ project.id }}</td>
+            <td>
+            <a routerLink="/proyectos/detalle/{{project.id}}">
+              {{ project.title }}
+            </a>
+            </td>
+            <td>{{ project.description }}</td>
+            <td>
+              <!--<a (click)="onDeleteProject(project)">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              </a>-->
+              <a
+                mwlConfirmationPopover
+                title="Eliminar Proyecto"
+                message="Esta seguro de eliminar: {{ project.title }}"
+                confirmText="SI"
+                cancelText="NO"
+                placement="top"
+                (confirm)="onDeleteProject(project)"
+                (cancel)="cancelClicked"
+                confirmButtonType="primary"
+                cancelButtonType="default">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              </a>
+              <a routerLink="/proyectos/edit/{{project.id}}" >
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              </a></td>   
+            </tr>
+                
+
+        </tbody>
+
+      </table> 
+  </div>
+
+  <div class="clearfix"></div>
+
+  <div class="row">
+    <div class="col-md-2 col-md-offset-10 margin-top-sm">
+      <div class="b-btn-new-project overflow-hidden">
+        <button class="btn btn-primary pull-right" [routerLink]="['/proyectos/nuevo']">
+          Nuevo Proyecto
+        </button>
+      </div>
+    </div>
+  </div>
+
+</ng-template>
+
+<jaspero-alerts [defaultSettings]="options"></jaspero-alerts>
+

@@ -1,26 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HttpModule} from '@angular/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {JasperoAlertsModule} from '@jaspero/ng2-alerts';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 
 import { AppComponent } from './app.component';
-import { ProjectListComponent } from './auth/project-list/project-list.component';
+import { ProjectListComponent } from './auth/project/project-list/project-list.component';
 import { HeaderComponent } from './common/header/header.component';
 import { LoaderComponent } from './common/loader/loader.component';
-import {ProjectListService} from "./auth/project-list/services/project-list.service";
-import {HttpModule} from "@angular/http";
-import { IssueListComponent } from './auth/issue-list/issue-list.component';
-import {IssueListService} from "./auth/issue-list/services/issue-list.service";
+import {ProjectService} from './auth/project/services/project.service';
 import { LoginComponent } from './public/login/login.component';
-import {Ng2Webstorage} from "ngx-webstorage";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {routes} from './routes';
+
+import {Ng2Webstorage} from 'ngx-webstorage';
+
+import {HttpService} from './common/services/http.service';
 import { HomeComponent } from './auth/home/home.component';
-import {RouterModule} from "@angular/router";
-import {routes} from "./routes";
-import {AuthenticationService} from "./common/services/authentication.service";
-import {HttpService} from "./common/services/http.service";
-import {AuthGuard} from "./common/guards/auth.guard";
-import {PublicGuard} from "./common/guards/public.guard";
+import {RouterModule} from '@angular/router';
+import {AuthenticationService} from './common/services/authentication.service'
+import {PublicGuard} from './common/guards/public.guard';
+import {AuthGuard} from './common/guards/auth.guard';
 import { NotFoundComponent } from './common/not-found/not-found.component';
 import { SortingComponent } from './common/sorting/sorting.component';
+import { NewProjectComponent } from './auth/project/new-project/new-project.component';
+import { DetailProjectComponent } from './auth/project/detail-project/detail-project.component';
+import { EditProjectComponent } from './auth/project/edit-project/edit-project.component';
+import { UserService } from "./auth/user/service/user.service";
+
 
 @NgModule({
   declarations: [
@@ -28,16 +36,31 @@ import { SortingComponent } from './common/sorting/sorting.component';
     ProjectListComponent,
     HeaderComponent,
     LoaderComponent,
-    IssueListComponent,
     LoginComponent,
     HomeComponent,
     NotFoundComponent,
-    SortingComponent
+    SortingComponent,
+    NewProjectComponent,
+    DetailProjectComponent,
+    EditProjectComponent
   ],
   imports: [
-    BrowserModule,HttpModule,Ng2Webstorage,FormsModule,ReactiveFormsModule,RouterModule.forRoot(routes)
+    BrowserModule,
+    HttpModule,
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule.forRoot(routes),
+    Ng2Webstorage,
+    JasperoAlertsModule,
+    BrowserAnimationsModule,
+     ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'confirm' // set defaults here
+    })
   ],
-  providers: [ProjectListService,IssueListService,AuthenticationService,HttpService,AuthGuard,PublicGuard],
+  providers: [
+    ProjectService,HttpService,AuthenticationService,HttpService,PublicGuard, AuthGuard, // Guards
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

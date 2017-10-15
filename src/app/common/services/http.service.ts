@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
-import {Config} from '../config';
+import {Config} from '../../common/config';
 
 @Injectable()
 export class HttpService {
@@ -22,14 +22,26 @@ export class HttpService {
 
   public post(url, params, token?): Observable<any> {
     const headers = !!token ? new Headers({
-        'Content-Type': 'application/json',
-        'Api-Token': token
-      }) : new Headers({'Content-Type': 'application/json'});
+      'Content-Type': 'application/json',
+      'Api-Token': token
+    }) : new Headers({'Content-Type': 'application/json'});
 
     const options = new RequestOptions({headers: headers});
     const body = JSON.stringify(params);
 
     return this._http.post(url, body, options).map(response => response.json());
+  }
+
+  public put(url, params, token?): Observable<any> {
+    const headers = !!token ? new Headers({
+      'Content-Type': 'application/json',
+      'Api-Token': token
+    }) : new Headers({'Content-Type': 'application/json'});
+
+    const options = new RequestOptions({headers: headers});
+    const body = JSON.stringify(params);
+
+    return this._http.put(url, body, options).map(response => response.json());
   }
 
   public delete(url, token): Observable<any> {

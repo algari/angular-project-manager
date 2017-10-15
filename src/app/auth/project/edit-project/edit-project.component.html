@@ -1,0 +1,82 @@
+<div *ngIf="isLoading; else elseBlock">
+  <div class="auth-loader-container">
+    <app-loader></app-loader>
+  </div>
+</div>
+<ng-template #elseBlock>
+<form #projectForm="ngForm" (ngSubmit)="onSubmit($event)">
+
+  <div class="form-group">
+    <label for="title">Título</label>
+    <input type="text" id="title" class="form-control"
+           required minlength="4" maxlength="150"
+           name="name" [(ngModel)]="project.title"
+           #title="ngModel">
+  </div>
+  <div class="form-group">
+    <label for="slug">Slug</label>
+    <input type="text" id="slug" class="form-control"
+           name="slug" required
+           [(ngModel)]="project.slug" #slug="ngModel">
+  </div>
+
+  <div class="form-group">
+    <label for="description">Descripción</label>
+    <input type="text" id="description" class="form-control"
+           name="description" required
+           [(ngModel)]="project.description" #description="ngModel">
+  </div>
+
+  <div class="form-group">
+    <label for="description">Usuario</label>
+    <select [(ngModel)]="project.user_id" #userID="ngModel" class="form-control"
+           name="userID" required>
+      <option *ngFor="let u of users" [ngValue]="u.id">{{u.name}}</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-default"
+          [disabled]="!projectForm.form.valid">Guardar
+  </button>
+  <button routerLink="/proyectos"
+      title="Regresar">Regresar
+  </button>
+
+  <div class="clearfix"></div>
+  <div
+    *ngIf="!projectForm.form.valid"
+    class="alert alert-danger margin-top-sm">
+    <ul>
+      <div *ngIf="title.errors">
+        <li [hidden]="!title.errors.required">
+          Título es requerido
+        </li>
+        <li [hidden]="!title.errors.minlength">
+          Título debe tener al menos 4 caracteres.
+        </li>
+        <li [hidden]="!title.errors.maxlength">
+          Título no puede ser mayor a 24 caracteres.
+        </li>
+      </div>
+      <div *ngIf="slug.errors">
+        <li [hidden]="!slug.errors.required">
+          Slug es requerido
+        </li>
+      </div>
+      <div *ngIf="description.errors">
+        <li [hidden]="!description.errors.required">
+          Descripción es requerida
+        </li>
+      </div>
+      <div *ngIf="userID.errors">
+        <li [hidden]="!userID.errors.required">
+          ID de usuario requerido
+        </li>
+      </div>
+    </ul>
+  </div>
+
+</form>
+</ng-template>
+
+<jaspero-alerts [defaultSettings]="options"></jaspero-alerts>
