@@ -19,7 +19,7 @@
             </button>
             <div id="logo" class="logo">
               <a
-                routerLink="/home"
+                routerLink="/"
                 class="b-navbar-brand">
                 <i class="fa fa-area-chart" aria-hidden="true"></i>
               </a>
@@ -28,16 +28,29 @@
           <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav pull-right">
               <li class="leaf"
-                  >
-                <a *ngIf="_authService.isLoggedIn()"
-                  routerLink="/proyectos"
-                  title="Proyectos">Proyectos</a>
+                  [ngClass]="{ active: router.url.indexOf('/auth/proyectos') !== -1}"
+                  *ngIf="_authService.isLoggedIn()">
+                <a
+                  routerLink="/auth/proyectos"
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  title="Cursos">Proyectos</a>
               </li>
               <li class="leaf"
-                  >
-                <a *ngIf="_authService.isLoggedIn()"
-                routerLink="/issues"
+                  [ngClass]="{ active: router.url.indexOf('/auth/issues') !== -1}"
+                  *ngIf="_authService.isLoggedIn()">
+                <a routerLink="/auth/issues"
+                   routerLinkActive="active"
+                   [routerLinkActiveOptions]="{ exact: true }"
                    title="Issues">Issues</a>
+              </li>
+              <li class="leaf"
+                  [ngClass]="{ active: router.url.indexOf('/auth/usuarios') !== -1}"
+                  *ngIf="_authService.isLoggedIn()">
+                <a routerLink="/auth/usuarios"
+                   routerLinkActive="active"
+                   [routerLinkActiveOptions]="{ exact: true }"
+                   title="Usuarios">Usuarios</a>
               </li>
               <li class="leaf" >
                 <a title="Cerrar sesión" (click)="logout()">Salir</a>

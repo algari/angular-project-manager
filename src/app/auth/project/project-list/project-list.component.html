@@ -34,7 +34,7 @@
           <tr class="info">
             <td> {{ project.id }}</td>
             <td>
-            <a routerLink="/proyectos/detalle/{{project.id}}">
+            <a routerLink="/auth/detalle/{{project.id}}">
               {{ project.title | uppercase}}
             </a>
             </td>
@@ -59,7 +59,7 @@
                 cancelButtonType="default">
                 <i class="fa fa-trash" aria-hidden="true"></i>
               </a>
-              <a routerLink="/proyectos/edit/{{project.id}}" >
+              <a routerLink="/auth/edit/{{project.id}}" >
                 <i class="fa fa-pencil" aria-hidden="true"></i>
               </a></td>
             </tr>
@@ -75,7 +75,7 @@
   <div class="row">
     <div class="col-md-2 col-md-offset-10 margin-top-sm">
       <div class="b-btn-new-project overflow-hidden">
-        <button class="btn btn-primary pull-right" [routerLink]="['/proyectos/nuevo']">
+        <button class="btn btn-primary pull-right" [routerLink]="['/auth/nuevo']">
           Nuevo Proyecto
         </button>
       </div>

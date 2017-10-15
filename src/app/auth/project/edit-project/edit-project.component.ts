@@ -28,7 +28,7 @@ export class EditProjectComponent implements OnInit {
       const id: number = params['id'];
        this.loadProject(id);
        this.isLoading = false;
-       this.loadUsers();  
+       this.loadUsers();
     });
   }
 
@@ -89,7 +89,7 @@ export class EditProjectComponent implements OnInit {
             duration: 3000
           });
         setTimeout(() => {
-          this._router.navigate(['/proyectos']);
+          this._router.navigate(['/auth/proyectos']);
         }, 3000);
       },
       errorResponse => {

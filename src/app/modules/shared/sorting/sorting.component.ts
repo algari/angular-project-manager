@@ -2,8 +2,8 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import * as _ from 'lodash';
 @Component({
   selector: 'app-sorting',
-  templateUrl: './sorting.component.html',
-  styleUrls: ['./sorting.component.css']
+  templateUrl: 'sorting.component.html',
+  styleUrls: ['sorting.component.css']
 })
 export class SortingComponent implements OnInit {
 

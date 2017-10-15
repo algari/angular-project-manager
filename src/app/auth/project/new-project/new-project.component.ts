@@ -25,7 +25,7 @@ export class NewProjectComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadUsers();  
+    this.loadUsers();
   }
 
   public loadUsers() {
@@ -63,7 +63,7 @@ export class NewProjectComponent implements OnInit {
             duration: 3000
           });
         setTimeout(() => {
-          this._router.navigate(['/proyectos']);
+          this._router.navigate(['/auth/proyectos']);
         }, 3000);
       },
       errorResponse => {

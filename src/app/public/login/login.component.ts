@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
           this._authService.user = data;
           this._authService.hasSession = true;
           this._locker.store('user', data);
-          this._router.navigate(['/home']);
+          this._router.navigate(['/auth/home']);
       },
       err => {
         console.error(err);
