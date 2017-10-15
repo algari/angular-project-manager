@@ -31,14 +31,13 @@
                   >
                 <a *ngIf="_authService.isLoggedIn()"
                   routerLink="/proyectos"
-                  title="Cursos">Proyectos</a>
+                  title="Proyectos">Proyectos</a>
               </li>
               <li class="leaf"
                   >
-                <a
-                *ngIf="_authService.isLoggedIn()"
+                <a *ngIf="_authService.isLoggedIn()"
                 routerLink="/issues"
-                   title="Iniciar sesión">Issues</a>
+                   title="Issues">Issues</a>
               </li>
               <li class="leaf" >
                 <a title="Cerrar sesión" (click)="logout()">Salir</a>
