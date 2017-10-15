@@ -28,6 +28,7 @@ import { NewProjectComponent } from './auth/project/new-project/new-project.comp
 import { DetailProjectComponent } from './auth/project/detail-project/detail-project.component';
 import { EditProjectComponent } from './auth/project/edit-project/edit-project.component';
 import { UserService } from "./auth/user/service/user.service";
+import { MomentPipePipe } from './common/pipes/moment-pipe.pipe';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { UserService } from "./auth/user/service/user.service";
     SortingComponent,
     NewProjectComponent,
     DetailProjectComponent,
-    EditProjectComponent
+    EditProjectComponent,
+    MomentPipePipe
   ],
   imports: [
     BrowserModule,

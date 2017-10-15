@@ -22,6 +22,8 @@
           <tr>
             <th>ID</th>
             <th>Titulo</th>
+            <th>Creado</th>
+            <th>Actualizado</th>
             <th>Description</th>
             <th>Acción</th>
           </tr>
@@ -31,9 +33,12 @@
             <td> {{ project.id }}</td>
             <td>
             <a routerLink="/proyectos/detalle/{{project.id}}">
-              {{ project.title }}
+              {{ project.title | uppercase}}
             </a>
             </td>
+            <!--se puede enviar solo moment y retorna la fecha por defecto Oct 5, 2017 1:29 AM-->
+            <td>{{ project.created_at | moment:'DD-MM-YYYY'}}</td>
+            <td>{{ project.updated_at | moment:'relative'}}</td>
             <td>{{ project.description }}</td>
             <td>
               <!--<a (click)="onDeleteProject(project)">
@@ -54,13 +59,13 @@
               </a>
               <a routerLink="/proyectos/edit/{{project.id}}" >
                 <i class="fa fa-pencil" aria-hidden="true"></i>
-              </a></td>   
+              </a></td>
             </tr>
-                
+
 
         </tbody>
 
-      </table> 
+      </table>
   </div>
 
   <div class="clearfix"></div>
