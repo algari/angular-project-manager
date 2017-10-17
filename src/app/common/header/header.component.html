@@ -39,7 +39,8 @@
               <li class="leaf"
                   [ngClass]="{ active: router.url.indexOf('/auth/issues') !== -1}"
                   *ngIf="_authService.isLoggedIn()">
-                <a routerLink="/auth/issues"
+                <a 
+                   routerLink="/auth/issues"
                    routerLinkActive="active"
                    [routerLinkActiveOptions]="{ exact: true }"
                    title="Issues">Issues</a>

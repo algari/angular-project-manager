@@ -19,7 +19,6 @@ import {AppRoutingModule} from "./app-routing.module";
 import {RouterModule} from "@angular/router";
 import {ConfirmationPopoverModule} from "angular-confirmation-popover";
 
-
 @NgModule({
   declarations: [
     AppComponent,

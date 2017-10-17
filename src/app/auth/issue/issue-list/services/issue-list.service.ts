@@ -4,9 +4,10 @@ import {Http, RequestOptions, Headers} from "@angular/http";
 import 'rxjs/add/operator/map';
 import {Observable} from "rxjs/Observable";
 import {Issue} from "../models/issue.model";
-import {Config} from "../../../common/config";
-import {AuthenticationService} from "../../../common/services/authentication.service";
-import {HttpService} from "../../../common/services/http.service";
+import { HttpService } from "app/common/services/http.service";
+import { Config } from "app/common/config";
+import { AuthenticationService } from "app/common/services/authentication.service";
+
 /**
  * Created by agalvis on 05/06/2017.
  */

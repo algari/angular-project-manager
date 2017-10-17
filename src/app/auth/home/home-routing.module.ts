@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {HomeComponent} from "./home.component";
 import {Routes, RouterModule} from "@angular/router";
 import {AuthGuard} from "../../common/guards/auth.guard";
+import { IssueListComponent } from 'app/auth/issue/issue-list/issue-list.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'proyectos', loadChildren:'./../project/project.module#ProjectModule',
     data: { name: 'Proyectos' }, canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'issues', loadChildren:'./../issue/issue.module#IssueModule',
+    data: { name: 'Issues' }, canActivate: [ AuthGuard ]
   }
 ];
 
