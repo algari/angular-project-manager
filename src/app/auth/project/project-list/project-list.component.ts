@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectService} from '../services/project.service';
-import {AlertsService, AlertType} from '@jaspero/ng2-alerts/dist';
 import {Project} from "../models/project.model";
 import {Config} from '../../../common/config';
 
@@ -16,7 +15,7 @@ export class ProjectListComponent implements OnInit {
   projects: Array<Project>;
 
   constructor(private _projectService: ProjectService,
-              private _alert: AlertsService) {
+              ) {
   }
 
   ngOnInit() {
@@ -32,13 +31,13 @@ export class ProjectListComponent implements OnInit {
       },
       err => {
         console.error(err);
-        this._alert.create('error', `Error al listar los proyectos :(`,
-          {
-            overlay: true,
-            overlayClickToClose: true,
-            showCloseButton: true,
-            duration: 3000
-          });
+        // this._alert.create('error', `Error al listar los proyectos :(`,
+        //   {
+        //     overlay: true,
+        //     overlayClickToClose: true,
+        //     showCloseButton: true,
+        //     duration: 3000
+        //   });
       },
       () => {
         console.log('Finished getAllProjects');
@@ -54,13 +53,13 @@ export class ProjectListComponent implements OnInit {
       },
       errorResponse => {
         const errorData = errorResponse.json();
-        this._alert.create('error', `Error al Eliminar el proyectos :( ${project.title}`,
-          {
-            overlay: true,
-            overlayClickToClose: true,
-            showCloseButton: true,
-            duration: 3000
-          });
+        // this._alert.create('error', `Error al Eliminar el proyectos :( ${project.title}`,
+        //   {
+        //     overlay: true,
+        //     overlayClickToClose: true,
+        //     showCloseButton: true,
+        //     duration: 3000
+        //   });
         console.error(errorData.error);
       },
       () => {

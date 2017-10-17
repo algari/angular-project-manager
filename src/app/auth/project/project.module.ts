@@ -8,7 +8,6 @@ import {ProjectService} from "./services/project.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {RouterModule} from "@angular/router";
-import {JasperoAlertsModule} from "@jaspero/ng2-alerts/dist";
 
 import {SharedModule} from "../../modules/shared/shared.module";
 import {ProjectRoutingModule} from "./project-routing.module";
@@ -23,7 +22,6 @@ import {ConfirmationPopoverModule} from "angular-confirmation-popover";
     ReactiveFormsModule,
     SharedModule,
     ProjectRoutingModule,
-    JasperoAlertsModule,
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'confirm' // set defaults here
     })

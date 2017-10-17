@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Project } from '../models/project.model';
 import { Config } from '../../../common/config';
-import { AlertsService, AlertType } from '@jaspero/ng2-alerts/dist';
 import { ProjectService } from '../services/project.service';
 
 @Component({
@@ -15,7 +14,7 @@ export class DetailProjectComponent implements OnInit {
   apiBaseURL: string = Config.API_SERVER_URL;
   project: Project;
 
-  constructor(private _alert: AlertsService, 
+  constructor(
     public _activatedRoute: ActivatedRoute, private _projectService: ProjectService) { }
 
   ngOnInit() {
@@ -32,14 +31,14 @@ export class DetailProjectComponent implements OnInit {
     },
       errorResponse => {
         const errorData = errorResponse.json();
-        this._alert.create('error', `Error al obtener el proyecto :( ${id}`,
-          {
-            overlay: true,
-            overlayClickToClose: true,
-            showCloseButton: true,
-            duration: 3000
-          });
-        console.error(errorData.error);
+        // this._alert.create('error', `Error al obtener el proyecto :( ${id}`,
+        //   {
+        //     overlay: true,
+        //     overlayClickToClose: true,
+        //     showCloseButton: true,
+        //     duration: 3000
+        //   });
+        // console.error(errorData.error);
       },
       () => {
         console.log('Finished getSingle');

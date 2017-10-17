@@ -17,7 +17,6 @@ import { NotFoundComponent } from './common/not-found/not-found.component';
 import { UserService } from "./auth/user/service/user.service";
 import {AppRoutingModule} from "./app-routing.module";
 import {RouterModule} from "@angular/router";
-import {JasperoAlertsModule} from "@jaspero/ng2-alerts/dist";
 import {ConfirmationPopoverModule} from "angular-confirmation-popover";
 
 
@@ -35,7 +34,6 @@ import {ConfirmationPopoverModule} from "angular-confirmation-popover";
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    JasperoAlertsModule,
     Ng2Webstorage,
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'confirm' // set defaults here
