@@ -14,7 +14,6 @@ import {RouterModule} from "@angular/router";
     SortingComponent,
     MomentPipePipe,
     LoaderComponent,
-
   ],
   exports:[
     SortingComponent,

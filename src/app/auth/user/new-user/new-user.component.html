@@ -1,0 +1,56 @@
+
+ <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
+ 
+ <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    
+     <div formGroupName="user">
+      <div class="form-group" [ngClass]="{ 'has-error': isRequired('name')}">
+        <label for="name">Nombre</label>
+        <input id="name" formControlName="name" class="form-control">
+        <span class="help-block" *ngIf="isRequired('name')">
+          Usuario requerido
+        </span>
+      </div>
+
+      <div class="form-group" [ngClass]="{'has-error': isRequired('username')}">
+        <label for="username">Nombre de usuario</label>
+        <input id="username" formControlName="username" class="form-control">
+        <span class="help-block" *ngIf="isRequired('username')">
+          Nombre de usuario requerido
+        </span>
+      </div>
+
+      <div class="form-group" [ngClass]="{'has-error': isRequired('email') || isInvalidEmail()}">
+        <label for="email">Correo</label>
+        <input id="email" formControlName="email" class="form-control">
+        <span class="help-block" *ngIf="isRequired('email')">
+          Correo requerido
+        </span>
+        <span class="help-block" *ngIf="isInvalidEmail()">
+          Correo no tiene formato válido
+        </span>
+      </div>
+
+      <div class="form-group" [ngClass]="{'has-error' : isRequired('password') || isInvalidPassword()}">
+        <label for="password">Contraseña</label>
+        <input id="password" type="password" formControlName="password" class="form-control">
+        <span class="help-block" *ngIf="isRequired('password')">
+          Contraseña requerida
+        </span>
+        <span class="help-block" *ngIf="form.get('user.password').hasError('invalidPassword')">
+          Contraseña requiere 4 letras seguido de 3 dígitos
+        </span>
+      </div>
+    
+    </div>
+    <div class="form-group margin-top-sm">
+      <button
+        type="submit" class="btn btn-primary" [disabled]="form.invalid">Guardar
+      </button>
+    </div>
+    <pre>
+      {{ form.value | json }}
+    </pre>
+
+  </form>
+</div> 

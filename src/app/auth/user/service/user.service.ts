@@ -22,4 +22,9 @@ export class UserService {
         return this._http.get(url, this._authService.user.api_token);
     }
 
+    public createUser( user: User ): Observable<Object> {
+        const url = `${this.apiBaseURL}/users`;
+        return this._http.post( url, user, this._authService.user.api_token );
+      }
+
 }
